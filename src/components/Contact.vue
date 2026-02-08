@@ -1,397 +1,319 @@
 <template>
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <p>{{ contactText }}</p>
-          <div class="contact-items">
-            <div v-for="item in contactItems" :key="item.type" class="contact-item">
-              <span class="contact-icon">{{ item.icon }}</span>
-              <div>
-                <h4>{{ item.label }}</h4>
-                <a :href="item.link" target="_blank">{{ item.value }}</a>
+  <main class="contact flex-1 min-h-screen h-screen bg-white dark:bg-black border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
+    <header class="shrink-0 px-4 py-6 sm:px-6 md:px-8">
+      <div class="flex justify-end mb-4">
+        <div class="lang-toggle inline-flex rounded-full p-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-sm transition-colors duration-500 ease-in-out" role="group" aria-label="Choose language">
+          <button type="button" class="lang-btn cursor-pointer" :class="{ 'lang-btn-active': lang === 'id' }" @click="lang = 'id'" title="Indonesia">Id</button>
+          <button type="button" class="lang-btn cursor-pointer" :class="{ 'lang-btn-active': lang === 'en' }" @click="lang = 'en'" title="English">Eng</button>
+        </div>
+      </div>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:text-4xl transition-colors duration-500 ease-in-out">{{ t.pageTitle }}</h1>
+      <nav class="flex flex-wrap gap-4 sm:gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
+        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('home')">{{ t.navHome }}</a>
+        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('aboutme')">{{ t.navAbout }}</a>
+        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('achievements')">{{ t.navAchievements }}</a>
+        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('projects')">{{ t.navProjects }}</a>
+        <a href="#" class="nav-link nav-link-active text-sm font-medium">{{ t.navContact }}</a>
+      </nav>
+    </header>
+
+    <div class="flex-1 min-h-0 overflow-y-auto px-4 pb-8 sm:px-6 md:px-8">
+      <div class="max-w-5xl">
+        <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-500 ease-in-out">
+          {{ t.sectionTitle }}
+        </h2>
+
+        <!-- Gmail card - full width -->
+        <div
+          class="contact-card block w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 p-4 sm:p-5 mb-4 transition-all duration-300 hover:shadow-lg"
+          :style="{ background: gradients.gmail }"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex-1">
+              <h3 class="text-base font-bold text-white mb-1">{{ t.gmailTitle }}</h3>
+              <p class="text-xs text-white/90">{{ t.gmailDesc }}</p>
+              <a
+                :href="gmailHref"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
+              >
+                {{ t.gmailBtn }}
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </a>
+            </div>
+            <div class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+              <span class="contact-icon" v-html="icons.gmail"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instagram & TikTok row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+          <div
+            class="contact-card block rounded-xl border-2 border-gray-300 dark:border-gray-600 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg"
+            :style="{ background: gradients.instagram }"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div class="flex-1">
+                <h3 class="text-base font-bold text-white mb-1">Instagram</h3>
+                <p class="text-xs text-white/90">{{ t.instagramDesc }}</p>
+                <a
+                  href="https://www.instagram.com/amrmhdn_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
+                >
+                  {{ t.visitBtn }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                <span class="contact-icon" v-html="icons.instagram"></span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="contact-card block rounded-xl border-2 border-gray-300 dark:border-gray-600 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg"
+            :style="{ background: gradients.tiktok }"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div class="flex-1">
+                <h3 class="text-base font-bold text-white mb-1">TikTok</h3>
+                <p class="text-xs text-white/90">{{ t.tiktokDesc }}</p>
+                <a
+                  href="https://www.tiktok.com/@blackswuit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
+                >
+                  {{ t.visitBtn }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                <span class="contact-icon" v-html="icons.tiktok"></span>
               </div>
             </div>
           </div>
         </div>
-        <form class="contact-form" @submit.prevent="handleSubmit">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" v-model="form.name" required />
+
+        <!-- LinkedIn & GitHub row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div
+            class="contact-card block rounded-xl border-2 border-gray-300 dark:border-gray-600 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg"
+            :style="{ background: gradients.linkedin }"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div class="flex-1">
+                <h3 class="text-base font-bold text-white mb-1">LinkedIn</h3>
+                <p class="text-xs text-white/90">{{ t.linkedinDesc }}</p>
+                <a
+                  href="https://www.linkedin.com/in/muhammad-amar-mahdin-st-mos-mcf-962b9a2a0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
+                >
+                  {{ t.visitBtn }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                <span class="contact-icon" v-html="icons.linkedin"></span>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" v-model="form.email" required />
+          <div
+            class="contact-card block rounded-xl border-2 border-gray-300 dark:border-gray-600 p-4 sm:p-5 transition-all duration-300 hover:shadow-lg"
+            :style="{ background: gradients.github }"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div class="flex-1">
+                <h3 class="text-base font-bold text-white mb-1">GitHub</h3>
+                <p class="text-xs text-white/90">{{ t.githubDesc }}</p>
+                <a
+                  href="https://github.com/amarmahdin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
+                >
+                  {{ t.visitBtn }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+                <span class="contact-icon" v-html="icons.github"></span>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" v-model="form.message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn-submit" :disabled="isLoading">
-            <span v-if="!isLoading">Send Message</span>
-            <span v-else>Sending...</span>
-          </button>
-        </form>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import emailjs from '@emailjs/browser'
+import { ref, computed, inject, onMounted } from 'vue'
+import * as simpleIcons from 'simple-icons'
 
-const contactText = 'I am always open to discussing new projects, collaboration opportunities, or just chatting about technology. Feel free to reach out to me!'
+const lang = ref('en')
+const setPage = inject('setPage')
 
-const contactItems = [
-  { type: 'email', icon: '✉️', label: 'Email', value: 'amarmahdin01@gmail.com', link: 'mailto:amarmahdin01@gmail.com' },
-  { type: 'github', icon: '📱', label: 'GitHub', value: 'github.com/amarmahdin', link: 'https://github.com/amarmahdin' },
-  { type: 'linkedin', icon: '💼', label: 'LinkedIn', value: 'linkedin.com/in/muhammadamarmahdin', link: 'https://www.linkedin.com/in/muhammad-amar-mahdin-st-mos-mcf-962b9a2a0/' }
-]
+const email = 'amarmahdin01@gmail.com'
 
-const form = ref({
-  name: '',
-  email: '',
-  message: ''
+const gmailHref = computed(() => `mailto:${email}`)
+
+const gradients = {
+  gmail: 'linear-gradient(135deg, #EA4335 0%, #D33426 50%, #BB2A1E 100%)',
+  instagram: 'linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+  tiktok: 'linear-gradient(135deg, #000000 0%, #2d2d2d 50%, #1a1a1a 100%)',
+  linkedin: 'linear-gradient(135deg, #0A66C2 0%, #004182 50%, #003366 100%)',
+  github: 'linear-gradient(135deg, #2d333b 0%, #181717 50%, #0d1117 100%)'
+}
+
+const icons = ref({
+  gmail: '',
+  instagram: '',
+  tiktok: '',
+  linkedin: '',
+  github: ''
 })
 
-const isLoading = ref(false)
-
-// EmailJS Configuration
-// Ganti dengan Public Key, Service ID, dan Template ID dari EmailJS Anda
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY' // Dapatkan dari EmailJS Dashboard
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID' // Dapatkan dari EmailJS Dashboard
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID' // Dapatkan dari EmailJS Dashboard
-
-// Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY)
-
-const handleSubmit = async () => {
-  if (!form.value.name || !form.value.email || !form.value.message) {
-    alert('Please fill in all fields.')
-    return
-  }
-
-  isLoading.value = true
-
+const getIconSVG = (iconKey, fillColor = '#ffffff') => {
   try {
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        from_name: form.value.name,
-        from_email: form.value.email,
-        message: form.value.message,
-        to_email: 'amarmahdin01@gmail.com' // Email tujuan Anda
-      }
-    )
+    const icon = simpleIcons[iconKey]
+    if (!icon?.path) return ''
+    return `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-12 sm:h-12"><path fill="${fillColor}" d="${icon.path}"/></svg>`
+  } catch (e) { return '' }
+}
 
-    alert('Thank you! Your message has been sent successfully.')
-    form.value = { name: '', email: '', message: '' }
-  } catch (error) {
-    console.error('EmailJS Error:', error)
-    alert('Sorry, there was an error sending your message. Please try again later or contact me directly via email.')
-  } finally {
-    isLoading.value = false
+const linkedinSvg = '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-12 sm:h-12"><path fill="#ffffff" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'
+
+onMounted(() => {
+  icons.value = {
+    gmail: getIconSVG('siGmail'),
+    instagram: getIconSVG('siInstagram'),
+    tiktok: getIconSVG('siTiktok'),
+    linkedin: getIconSVG('siLinkedin') || linkedinSvg,
+    github: getIconSVG('siGithub')
+  }
+})
+
+const translations = {
+  id: {
+    pageTitle: 'Kontak',
+    navHome: 'Beranda',
+    navAbout: 'Tentang Saya',
+    navAchievements: 'Prestasi',
+    navProjects: 'Proyek Saya',
+    navContact: 'Kontak',
+    sectionTitle: 'Temukan saya di media sosial',
+    gmailTitle: 'Stay In Touch',
+    gmailDesc: 'Hubungi via email untuk pertanyaan atau kolaborasi.',
+    gmailBtn: 'Buka Gmail',
+    instagramDesc: 'Ikuti untuk update dan keseharian saya.',
+    tiktokDesc: 'Mari terhubung melalui konten kreatif.',
+    linkedinDesc: 'Terhubung untuk peluang profesional.',
+    githubDesc: 'Lihat proyek dan kode saya.',
+    visitBtn: 'Kunjungi'
+  },
+  en: {
+    pageTitle: 'Contact',
+    navHome: 'Home',
+    navAbout: 'Aboutme',
+    navAchievements: 'Achievements',
+    navProjects: 'My Projects',
+    navContact: 'Contact',
+    sectionTitle: 'Find me on social media',
+    gmailTitle: 'Stay In Touch',
+    gmailDesc: 'Reach out via email for inquiries or collaborations.',
+    gmailBtn: 'Go to Gmail',
+    instagramDesc: 'Follow for updates and daily life.',
+    tiktokDesc: 'Let\'s connect through creative content.',
+    linkedinDesc: 'Connect for professional opportunities.',
+    githubDesc: 'Check out my projects and code.',
+    visitBtn: 'Visit'
   }
 }
+
+const t = computed(() => translations[lang.value] || translations.en)
 </script>
 
 <style scoped>
-.contact {
-  padding: 8rem 2rem;
-  background: linear-gradient(180deg, #000000 0%, #1a0033 50%, #000000 100%);
-  position: relative;
-  overflow: hidden;
+.lang-toggle {
+  transition: box-shadow 0.2s ease, background-color 0.5s ease, border-color 0.5s ease;
 }
-
-.contact::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 50% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+.lang-toggle:hover {
+  box-shadow: 0 2px 8px rgba(20, 83, 45, 0.15);
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-align: center;
-  margin-bottom: 5rem;
-  color: #c77dff;
-  font-weight: 800;
-  position: relative;
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(199, 125, 255, 0.5);
-  z-index: 1;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #9d4edd, #c77dff, #9d4edd, transparent);
-  border-radius: 2px;
-  box-shadow: 0 0 20px rgba(199, 125, 255, 0.6);
-}
-
-.contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  position: relative;
-  z-index: 1;
-}
-
-.contact-info p {
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
-  line-height: 1.85;
-  color: #e0c4ff;
-  margin-bottom: 2.5rem;
-  font-weight: 300;
-  text-shadow: 0 0 10px rgba(224, 196, 255, 0.2);
-}
-
-.contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.contact-icon {
-  font-size: 2rem;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(157, 78, 221, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3), 0 1px 3px rgba(0, 0, 0, 0.3);
-  border: 1.5px solid rgba(199, 125, 255, 0.4);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.contact-item:hover .contact-icon {
-  transform: scale(1.12) rotate(5deg);
-  box-shadow: 0 8px 40px rgba(157, 78, 221, 0.6), 0 0 30px rgba(199, 125, 255, 0.4);
-  background: rgba(157, 78, 221, 0.3);
-  border-color: rgba(199, 125, 255, 0.8);
-}
-
-.contact-item h4 {
-  margin: 0 0 0.25rem 0;
-  color: #c77dff;
-  text-shadow: 0 0 10px rgba(199, 125, 255, 0.4);
-}
-
-.contact-item a {
-  color: #e0c4ff;
-  text-decoration: none;
-  transition: all 0.3s ease;
+.lang-btn {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #6b7280;
+  background: transparent;
 }
-
-.contact-item a:hover {
-  color: #ffffff;
-  transform: translateX(5px);
-  text-shadow: 0 0 15px rgba(199, 125, 255, 0.6);
+.lang-btn:hover {
+  color: #374151;
 }
-
-.contact-form {
-  background: rgba(157, 78, 221, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 3rem;
-  border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3), 0 1px 4px rgba(0, 0, 0, 0.3);
-  border: 1.5px solid rgba(199, 125, 255, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #9d4edd, #c77dff, #9d4edd);
-  box-shadow: 0 0 20px rgba(199, 125, 255, 0.6);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #c77dff;
-  font-weight: 500;
-  text-shadow: 0 0 10px rgba(199, 125, 255, 0.4);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  border: 1.5px solid rgba(199, 125, 255, 0.3);
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  background: rgba(157, 78, 221, 0.1);
-  color: #e0c4ff;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(224, 196, 255, 0.5);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: rgba(199, 125, 255, 0.8);
-  background: rgba(157, 78, 221, 0.15);
-  box-shadow: 0 0 0 4px rgba(157, 78, 221, 0.2), 0 0 20px rgba(199, 125, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.btn-submit {
-  width: 100%;
-  padding: 1.125rem;
-  background: linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%);
+.lang-btn-active {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 20px rgba(157, 78, 221, 0.4), 0 0 30px rgba(157, 78, 221, 0.2);
-  position: relative;
-  overflow: hidden;
-  letter-spacing: 0.5px;
-  border: 1px solid rgba(199, 125, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4);
+}
+.lang-btn-active:hover {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.5);
 }
 
-.btn-submit::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+.nav-link {
+  color: #6b7280;
+  transition: color 0.25s ease;
+}
+.nav-link:hover {
+  color: #374151;
+}
+:global(.dark) .nav-link {
+  color: #9ca3af;
+}
+:global(.dark) .nav-link:hover {
+  color: #e5e7eb;
+}
+.nav-link-active {
+  color: #16a34a;
+  border-bottom: 2px solid #16a34a;
+  padding-bottom: 0.25rem;
+  margin-bottom: -0.375rem;
+}
+:global(.dark) .nav-link-active {
+  color: #22c55e;
+  border-bottom-color: #22c55e;
 }
 
-.btn-submit:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 40px rgba(157, 78, 221, 0.6), 0 0 50px rgba(199, 125, 255, 0.3);
-  background: linear-gradient(135deg, #c77dff 0%, #9d4edd 100%);
+.contact-card a {
+  text-decoration: none;
 }
 
-.btn-submit:hover::before {
-  left: 100%;
+.contact-icon :deep(svg) {
+  width: 1.75rem;
+  height: 1.75rem;
 }
-
-.btn-submit:active {
-  transform: translateY(0);
-}
-
-.btn-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-@media (max-width: 768px) {
-  .contact {
-    padding: 4rem 1.5rem;
-  }
-
-  .section-title {
-    margin-bottom: 3rem;
-    font-size: 2rem;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .contact-form {
-    padding: 2rem;
-  }
-
-  .contact-icon {
-    width: 56px;
-    height: 56px;
-    font-size: 1.75rem;
-  }
-
-  .contact-item h4 {
-    font-size: 0.95rem;
-  }
-
-  .contact-item a {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact {
-    padding: 3rem 1rem;
-  }
-
-  .section-title {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-  }
-
-  .contact-form {
-    padding: 1.5rem;
-  }
-
-  .contact-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    padding: 0.875rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .btn-submit {
-    padding: 1rem;
-    font-size: 0.9rem;
+@media (min-width: 640px) {
+  .contact-icon :deep(svg) {
+    width: 2rem;
+    height: 2rem;
   }
 }
 </style>
