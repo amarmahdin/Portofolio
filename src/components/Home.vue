@@ -25,7 +25,7 @@
         </div>
       </div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:text-4xl transition-colors duration-500 ease-in-out">{{ t.pageTitle }}</h1>
-      <nav class="flex flex-wrap gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
+      <nav class="flex flex-wrap gap-4 sm:gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
         <a href="#" class="nav-link nav-link-active text-sm font-medium" @click.prevent="setPage('home')">{{ t.navHome }}</a>
         <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('aboutme')">{{ t.navAbout }}</a>
         <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('achievements')">{{ t.navAchievements }}</a>
@@ -68,7 +68,7 @@
           &lt;/&gt; {{ t.skills }}
         </p>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-500 ease-in-out">{{ t.skillsSubtitle }}</p>
-        <div class="flex flex-wrap gap-5">
+        <div class="flex flex-wrap gap-5 max-w-[1040px]">
           <div
             v-for="skill in skills"
             :key="skill.name"

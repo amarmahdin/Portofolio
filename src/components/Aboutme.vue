@@ -8,7 +8,7 @@
         </div>
       </div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:text-4xl transition-colors duration-500 ease-in-out">{{ t.pageTitle }}</h1>
-      <nav class="flex flex-wrap gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
+      <nav class="flex flex-wrap gap-4 sm:gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
         <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('home')">{{ t.navHome }}</a>
         <a href="#" class="nav-link nav-link-active text-sm font-medium">{{ t.navAbout }}</a>
         <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('achievements')">{{ t.navAchievements }}</a>
