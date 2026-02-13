@@ -124,16 +124,18 @@ const t = computed(() => translations[lang.value] || translations.en)
 const skillsData = [
   { name: 'HTML', iconKey: 'html5', color: '#E34F26' },
   { name: 'CSS', iconKey: 'css', color: '#1572B6' },
-  { name: 'Vue.js', iconKey: 'vuedotjs', color: '#4FC08D' },
-  { name: 'React.js', iconKey: 'react', color: '#61DAFB' },
-  { name: 'Javascript', iconKey: 'javascript', color: '#F7DF1E' },
+  { name: 'Bootstrap', iconKey: 'bootstrap', color: '#7952B3' },
   { name: 'Tailwind CSS', iconKey: 'tailwindcss', color: '#06B6D4' },
+  { name: 'React.js', iconKey: 'react', color: '#61DAFB' },
+  { name: 'Vue.js', iconKey: 'vuedotjs', color: '#4FC08D' },
+  { name: 'Javascript', iconKey: 'javascript', color: '#F7DF1E' },
   { name: 'Express.js', iconKey: 'express', color: '#000000' },
   { name: 'Node.js', iconKey: 'nodedotjs', color: '#339933' },
-  { name: 'MySQL', iconKey: 'mysql', color: '#4479A1' },
+  { name: 'SQL', iconKey: 'mysql', color: '#4479A1' },
+  { name: 'Postman', iconKey: 'postman', color: '#FF6C37' },
+  { name: 'Firebase', iconKey: 'firebase', color: '#FFCA28' },
   { name: 'Flutter', iconKey: 'flutter', color: '#02569B' },
-  { name: 'Git', iconKey: 'git', color: '#F05032' },
-  { name: 'Postman', iconKey: 'postman', color: '#FF6C37' }
+  { name: 'Git', iconKey: 'git', color: '#F05032' }
 ]
 
 const skills = ref([])
@@ -141,9 +143,10 @@ const skills = ref([])
 const getIconSVG = (iconKey, brandColor) => {
   try {
     const iconMap = {
-      html5: 'siHtml5', css: 'siCss', css3: 'siCss3', vuedotjs: 'siVuedotjs', react: 'siReact',
-      javascript: 'siJavascript', tailwindcss: 'siTailwindcss', express: 'siExpress',
-      nodedotjs: 'siNodedotjs', mysql: 'siMysql', flutter: 'siFlutter', git: 'siGit', postman: 'siPostman'
+      html5: 'siHtml5', css: 'siCss', bootstrap: 'siBootstrap', tailwindcss: 'siTailwindcss',
+      react: 'siReact', vuedotjs: 'siVuedotjs', javascript: 'siJavascript', express: 'siExpress',
+      nodedotjs: 'siNodedotjs', mysql: 'siMysql', postman: 'siPostman', firebase: 'siFirebase',
+      flutter: 'siFlutter', git: 'siGit'
     }
     const key = iconMap[iconKey] || `si${iconKey.charAt(0).toUpperCase()}${iconKey.slice(1)}`
     const icon = simpleIcons[key]
