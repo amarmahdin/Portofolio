@@ -158,7 +158,6 @@ import D5 from '../assets/D5.png'
 import D6 from '../assets/D6.png'
 import D7 from '../assets/D7.png'
 import D8 from '../assets/D8.png'
-import D9 from '../assets/D9.png'
 import O1 from '../assets/O1.png'
 import O2 from '../assets/O2.png'
 import O3 from '../assets/O3.png'
@@ -166,11 +165,17 @@ import O4 from '../assets/O4.png'
 import O5 from '../assets/O5.png'
 import O6 from '../assets/O6.png'
 import O7 from '../assets/O7.png'
+import O8 from '../assets/O8.png'
+import O9 from '../assets/O9.png'
+import O10 from '../assets/O10.png'
 import A1 from '../assets/A1.png'
 import A2 from '../assets/A2.png'
 import A3 from '../assets/A3.png'
 import A4 from '../assets/A4.png'
 import A5 from '../assets/A5.png'
+import A6 from '../assets/A6.png'
+import A7 from '../assets/A7.png'
+import A8 from '../assets/A8.png'
 
 const lang = ref('en')
 const setPage = inject('setPage')
@@ -181,9 +186,9 @@ const descriptionPopupOpen = ref(false)
 const descriptionPopupProject = ref(null)
 
 const simasetCarouselImages = [S1, S2, S3, S4, S5, S6, S7, S8, S9, SH1, SH2]
-const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8, D9]
-const oasisCarouselImages = [O1, O2, O3, O4, O5, O6, O7]
-const aspalCarouselImages = [A1, A2, A3, A4, A5]
+const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8]
+const oasisCarouselImages = [O1, O2, O3, O4, O5, O6, O7, O8, O9, O10]
+const aspalCarouselImages = [A1, A2, A3, A4, A5, A6, A7, A8]
 
 const techIconMap = {
   react: { key: 'siReact', color: '#61DAFB', displayName: 'React.js' },
