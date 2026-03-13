@@ -95,6 +95,7 @@ import mosImg from '../assets/mos.png'
 import msibImg from '../assets/msib.png'
 import dicodingImg from '../assets/dicoding.png'
 import babaImg from '../assets/baba.png'
+import sicenceImg from '../assets/sicence.png'
 
 const lang = ref('en')
 const setPage = inject('setPage')
@@ -108,6 +109,7 @@ const achievements = [
   { title: 'Azure AI Fundamentals', certificate: 'Microsoft', issuedDate: 'Sept 2025', image: mcfImg },
   { title: 'Word 2019 Specialist', certificate: 'Microsoft', issuedDate: 'Apr 2025', image: mosImg },
   { title: 'Study Independent', certificate: 'Kampus Merdeka', issuedDate: 'Jul 2024', image: msibImg },
+  { title: 'R Fundamental for Data Science', certificate: 'DQLab', issuedDate: 'Jul 2023', image: sicenceImg },
   { title: 'Belajar Dasar Pemrograman Web', certificate: 'dicoding', issuedDate: 'Jun 2020', image: dicodingImg },
   { title: 'HTML and CSS', certificate: 'babastudio', issuedDate: 'Nov 2019', image: babaImg }
 ]

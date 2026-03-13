@@ -176,6 +176,14 @@ import A5 from '../assets/A5.png'
 import A6 from '../assets/A6.png'
 import A7 from '../assets/A7.png'
 import A8 from '../assets/A8.png'
+import T1 from '../assets/T1.png'
+import T2 from '../assets/T2.png'
+import T3 from '../assets/T3.png'
+import T4 from '../assets/T4.png'
+import T5 from '../assets/T5.png'
+import T6 from '../assets/T6.png'
+import T7 from '../assets/T7.png'
+import T8 from '../assets/T8.png'
 
 const lang = ref('en')
 const setPage = inject('setPage')
@@ -185,6 +193,7 @@ const carouselImages = ref([])
 const descriptionPopupOpen = ref(false)
 const descriptionPopupProject = ref(null)
 
+const tirtarimbaCarouselImages = [T1, T2, T3, T4, T5, T6, T7, T8]
 const simasetCarouselImages = [S1, S2, S3, S4, S5, S6, S7, S8, S9, SH1, SH2]
 const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8]
 const oasisCarouselImages = [O1, O2, O3, O4, O5, O6, O7, O8, O9, O10]
@@ -206,6 +215,10 @@ const techIconMap = {
 }
 
 const projectDescriptions = {
+  tirtarimba: {
+    en: 'TIRTARIMBA Network Center is a modern web application designed for water distribution control centers at utility companies. Through a single, consistent, and responsive interface, the application provides a comprehensive overview of network conditions, including distribution pipeline performance, field devices and assets, customer profiles, billing status, as well as system activity and user roles.',
+    id: 'TIRTARIMBA Network Center adalah aplikasi web modern yang dirancang untuk pusat kendali distribusi air di perusahaan utilitas. Melalui satu antarmuka yang konsisten dan responsif, aplikasi ini memberikan gambaran menyeluruh mengenai kondisi jaringan, termasuk performa pipa distribusi, perangkat dan aset lapangan, profil pelanggan, status penagihan, serta aktivitas sistem dan peran pengguna.'
+  },
   simaset: {
     en: 'SIMASET is an Integrated Asset Management System for efficient management of company assets. Built with React.js for the frontend and Express.js for the backend, this system provides comprehensive employee input, asset vehicle, reimbursement and maintenance scheduling, and reporting features.',
     id: 'SIMASET adalah Sistem Manajemen Aset Terintegrasi untuk pengelolaan aset perusahaan secara efisien. Dibangun dengan React.js untuk frontend dan Express.js untuk backend, sistem ini menyediakan fitur input karyawan, aset kendaraan, reimburse dan penjadwalan perawatan, serta laporan yang komprehensif.'
@@ -225,6 +238,7 @@ const projectDescriptions = {
 }
 
 const projects = [
+  { title: 'TIRTARIMBA Network Center', descriptionKey: 'tirtarimba', image: T1, techStack: ['vuedotjs', 'tailwindcss', 'express', 'nodedotjs', 'mysql'], carouselImages: tirtarimbaCarouselImages },
   { title: 'SIMASET', descriptionKey: 'simaset', image: S1, techStack: ['react', 'tailwindcss', 'express', 'nodedotjs', 'mysql', 'flutter'], carouselImages: simasetCarouselImages },
   { title: 'DIAMOND', descriptionKey: 'diamond', image: D1, techStack: ['vuedotjs', 'tailwindcss'], carouselImages: diamondCarouselImages },
   { title: 'OASIS DESTINATION', descriptionKey: 'oasis', image: O1, techStack: ['react', 'tailwindcss', 'express'], carouselImages: oasisCarouselImages },
