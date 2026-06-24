@@ -99,7 +99,7 @@ const translations = {
     navProjects: 'Proyek Saya',
     navContact: 'Kontak',
     greeting: 'Halo, saya Muhammad Amar Mahdin',
-    location: 'Berbasis di Baubau, Indonesia',
+    location: 'Berbasis di Jakarta, Indonesia',
     onsite: 'Di tempat',
     skills: 'Keterampilan',
     skillsSubtitle: 'Keterampilan profesional saya'
@@ -112,7 +112,7 @@ const translations = {
     navProjects: 'My Projects',
     navContact: 'Contact',
     greeting: "Hi, I'm Muhammad Amar Mahdin",
-    location: 'Based in Baubau, Indonesia',
+    location: 'Based in Jakarta, Indonesia',
     onsite: 'Onsite',
     skills: 'Skills',
     skillsSubtitle: 'My professional skills'
