@@ -115,7 +115,7 @@
                 <h3 class="text-base font-bold text-white mb-1">LinkedIn</h3>
                 <p class="text-xs text-white/90">{{ t.linkedinDesc }}</p>
                 <a
-                  href="https://www.linkedin.com/in/muhammad-amar-mahdin-st-mos-mcf-962b9a2a0"
+                  href="https://www.linkedin.com/in/muhammad-amar-mahdin/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-medium transition-colors cursor-pointer"
