@@ -58,7 +58,7 @@
 
 <script setup>
 import { computed, inject } from 'vue'
-import fotoProfil from '@/assets/fotoku.png'
+import fotoProfil from '@/assets/fotoku.webp'
 
 const theme = inject('theme')
 const setTheme = inject('setTheme')

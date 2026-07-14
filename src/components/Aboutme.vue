@@ -135,10 +135,10 @@
 
 <script setup>
 import { ref, computed, inject } from 'vue'
-const simasetImg = new URL('../assets/simaset.png', import.meta.url).href
-const itplnImg = new URL('../assets/itpln.png', import.meta.url).href
-const iconplusImg = new URL('../assets/iconplus.png', import.meta.url).href
-const infiniteImg = new URL('../assets/infinite.png', import.meta.url).href
+const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
+const itplnImg = new URL('../assets/itpln.webp', import.meta.url).href
+const iconplusImg = new URL('../assets/iconplus.webp', import.meta.url).href
+const infiniteImg = new URL('../assets/infinite.webp', import.meta.url).href
 
 const lang = ref('en')
 const setPage = inject('setPage')

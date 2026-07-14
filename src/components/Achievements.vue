@@ -90,12 +90,12 @@
 
 <script setup>
 import { ref, computed, inject } from 'vue'
-import mcfImg from '../assets/mcf.png'
-import mosImg from '../assets/mos.png'
-import msibImg from '../assets/msib.png'
-import dicodingImg from '../assets/dicoding.png'
-import babaImg from '../assets/baba.png'
-import sicenceImg from '../assets/sicence.png'
+import mcfImg from '../assets/mcf.webp'
+import mosImg from '../assets/mos.webp'
+import msibImg from '../assets/msib.webp'
+import dicodingImg from '../assets/dicoding.webp'
+import babaImg from '../assets/baba.webp'
+import sicenceImg from '../assets/sicence.webp'
 
 const lang = ref('en')
 const setPage = inject('setPage')
