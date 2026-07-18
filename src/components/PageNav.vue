@@ -9,15 +9,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const props = defineProps({
-  lang: {
-    type: String,
-    default: 'en',
-  },
-})
+const lang = inject('lang')
 
 const translations = {
   id: {
@@ -36,7 +31,7 @@ const translations = {
   },
 }
 
-const t = computed(() => translations[props.lang] || translations.en)
+const t = computed(() => translations[lang.value] || translations.en)
 </script>
 
 <style scoped>

@@ -2,13 +2,10 @@
   <main class="projects flex-1 min-h-screen h-screen bg-white dark:bg-black border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
     <header class="shrink-0 px-4 py-6 sm:px-6 md:px-8">
       <div class="flex justify-end mb-4">
-        <div class="lang-toggle inline-flex rounded-full p-0.5 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-sm transition-colors duration-500 ease-in-out" role="group" aria-label="Choose language">
-          <button type="button" class="lang-btn cursor-pointer" :class="{ 'lang-btn-active': lang === 'id' }" @click="lang = 'id'" title="Indonesia">Id</button>
-          <button type="button" class="lang-btn cursor-pointer" :class="{ 'lang-btn-active': lang === 'en' }" @click="lang = 'en'" title="English">Eng</button>
-        </div>
+        <LangToggle />
       </div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:text-4xl transition-colors duration-500 ease-in-out">{{ t.pageTitle }}</h1>
-      <PageNav :lang="lang" />
+      <PageNav />
     </header>
 
     <div class="flex-1 min-h-0 overflow-y-auto px-4 pb-8 sm:px-6 md:px-8">
@@ -131,8 +128,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, inject, onMounted, onUnmounted } from 'vue'
 import PageNav from './PageNav.vue'
+import LangToggle from './LangToggle.vue'
 import { getSimpleIcon, getIconSvgByKey } from '@/utils/simpleIcons'
 import S1 from '../assets/S1.webp'
 import S2 from '../assets/S2.webp'
@@ -180,7 +178,7 @@ import T6 from '../assets/T6.webp'
 import T7 from '../assets/T7.webp'
 import T8 from '../assets/T8.webp'
 
-const lang = ref('en')
+const lang = inject('lang')
 const carouselOpen = ref(false)
 const carouselIndex = ref(0)
 const carouselImages = ref([])
@@ -330,34 +328,6 @@ const t = computed(() => translations[lang.value] || translations.en)
 </script>
 
 <style scoped>
-.lang-toggle {
-  transition: box-shadow 0.2s ease, background-color 0.5s ease, border-color 0.5s ease;
-}
-.lang-toggle:hover {
-  box-shadow: 0 2px 8px rgba(20, 83, 45, 0.15);
-}
-.lang-btn {
-  padding: 0.25rem 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 9999px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #6b7280;
-  background: transparent;
-}
-.lang-btn:hover {
-  color: #374151;
-}
-.lang-btn-active {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-  color: white;
-  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4);
-}
-.lang-btn-active:hover {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.5);
-}
-
 .project-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
 }

@@ -22,11 +22,27 @@ const setTheme = (value) => {
 provide('theme', theme)
 provide('setTheme', setTheme)
 
+const lang = ref('en')
+const setLang = (value) => {
+  if (value !== 'id' && value !== 'en') return
+  lang.value = value
+  localStorage.setItem('portfolio-lang', value)
+  document.documentElement.lang = value
+}
+provide('lang', lang)
+provide('setLang', setLang)
+
 onMounted(() => {
-  const saved = localStorage.getItem('portfolio-theme')
-  if (saved === 'dark' || saved === 'light') {
-    theme.value = saved
-    document.documentElement.classList.toggle('dark', saved === 'dark')
+  const savedTheme = localStorage.getItem('portfolio-theme')
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    theme.value = savedTheme
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark')
+  }
+
+  const savedLang = localStorage.getItem('portfolio-lang')
+  if (savedLang === 'id' || savedLang === 'en') {
+    lang.value = savedLang
+    document.documentElement.lang = savedLang
   }
 })
 </script>
