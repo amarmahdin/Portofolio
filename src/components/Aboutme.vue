@@ -64,6 +64,7 @@ import PageNav from './PageNav.vue'
 import LangToggle from './LangToggle.vue'
 
 const itplnImg = new URL('../assets/itpln.webp', import.meta.url).href
+const pdamImg = new URL('../assets/pdam.webp', import.meta.url).href
 const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
 const enjineringImg = new URL('../assets/enjinering.webp', import.meta.url).href
 const iconplusImg = new URL('../assets/iconplus.webp', import.meta.url).href
@@ -95,8 +96,7 @@ const careers = [
     },
   },
   {
-    image: null,
-    initials: 'TR',
+    image: pdamImg,
     id: {
       role: 'Full Stack Developer — Tirtarimba Network Center',
       company: 'PDAM Tirta Rimba, Baubau',
