@@ -138,7 +138,7 @@
 
 <script setup>
 import { ref, computed, inject, onMounted, onUnmounted } from 'vue'
-import * as simpleIcons from 'simple-icons'
+import { getSimpleIcon, getIconSvgByKey } from '@/utils/simpleIcons'
 import S1 from '../assets/S1.webp'
 import S2 from '../assets/S2.webp'
 import S3 from '../assets/S3.webp'
@@ -246,21 +246,7 @@ const projects = [
 ]
 
 const getIconSVG = (iconKey, brandColor) => {
-  try {
-    const icon = simpleIcons[iconKey]
-    if (!icon) return ''
-    const color = brandColor || (icon.hex ? `#${icon.hex}` : 'currentColor')
-    if (icon.path) {
-      return `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="project-tech-svg"><path fill="${color}" d="${icon.path}"/></svg>`
-    }
-    if (icon.svg) {
-      const svg = icon.svg
-        .replace(/<path\s+([^>]*?)d="/, `<path $1fill="${color}" d="`)
-        .replace('<svg ', '<svg class="project-tech-svg" ')
-      return svg
-    }
-  } catch (e) { console.warn('Icon not found:', iconKey) }
-  return ''
+  return getIconSvgByKey(iconKey, { color: brandColor, className: 'project-tech-svg' })
 }
 
 const getTechIcons = (techStack) => {
@@ -268,7 +254,7 @@ const getTechIcons = (techStack) => {
   return techStack.map(id => {
     const cfg = techIconMap[id]
     if (!cfg) return null
-    const icon = simpleIcons[cfg.key]
+    const icon = getSimpleIcon(cfg.key)
     const name = cfg.displayName || icon?.title || id
     return { name, icon: getIconSVG(cfg.key, cfg.color), color: cfg.color }
   }).filter(Boolean)

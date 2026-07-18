@@ -85,7 +85,7 @@
 
 <script setup>
 import { ref, computed, onMounted, inject } from 'vue'
-import * as simpleIcons from 'simple-icons'
+import { getIconSvgByKey } from '@/utils/simpleIcons'
 
 const lang = ref('en')
 const setPage = inject('setPage')
@@ -141,26 +141,7 @@ const skillsData = [
 const skills = ref([])
 
 const getIconSVG = (iconKey, brandColor) => {
-  try {
-    const iconMap = {
-      html5: 'siHtml5', css: 'siCss', bootstrap: 'siBootstrap', tailwindcss: 'siTailwindcss',
-      react: 'siReact', vuedotjs: 'siVuedotjs', javascript: 'siJavascript', express: 'siExpress',
-      nodedotjs: 'siNodedotjs', mysql: 'siMysql', postman: 'siPostman', firebase: 'siFirebase',
-      flutter: 'siFlutter', git: 'siGit'
-    }
-    const key = iconMap[iconKey] || `si${iconKey.charAt(0).toUpperCase()}${iconKey.slice(1)}`
-    const icon = simpleIcons[key]
-    if (!icon) return ''
-    const color = brandColor || (icon.hex ? `#${icon.hex}` : 'currentColor')
-    if (icon.svg) {
-      const svg = icon.svg.replace('<path d="', `<path fill="${color}" d="`)
-      return svg.replace('<svg ', '<svg class="skill-svg" ')
-    }
-    if (icon.path) {
-      return `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="skill-svg"><path fill="${color}" d="${icon.path}"/></svg>`
-    }
-  } catch (e) { console.warn('Icon not found:', iconKey) }
-  return ''
+  return getIconSvgByKey(iconKey, { color: brandColor, className: 'skill-svg' })
 }
 
 onMounted(() => {
