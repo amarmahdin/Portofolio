@@ -1,5 +1,5 @@
 <template>
-  <main class="aboutme flex-1 min-h-0 w-full md:min-h-screen md:h-screen bg-white dark:bg-black md:border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
+  <main class="aboutme flex-1 w-full md:min-h-0 md:min-h-screen md:h-screen bg-white dark:bg-black md:border-l border-gray-200 dark:border-gray-700 flex flex-col md:overflow-hidden transition-colors duration-500 ease-in-out">
     <header class="shrink-0 px-4 py-6 sm:px-6 md:px-8">
       <div class="flex justify-end mb-4">
         <LangToggle />
@@ -8,7 +8,7 @@
       <PageNav />
     </header>
 
-    <div class="flex-1 min-h-0 overflow-y-auto px-4 pb-8 sm:px-6 md:px-8">
+    <div class="page-scroll px-4 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-6 md:flex-1 md:min-h-0 md:px-8">
       <div class="prose prose-gray dark:prose-invert max-w-5xl text-gray-700 dark:text-gray-300 text-sm leading-relaxed sm:text-base text-justify transition-colors duration-500 ease-in-out">
         <p class="mb-4">{{ t.intro1 }}</p>
         <p class="mb-4">{{ t.intro2 }}</p>

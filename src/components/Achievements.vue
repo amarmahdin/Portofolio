@@ -1,5 +1,5 @@
 <template>
-  <main class="achievements flex-1 min-h-0 w-full md:min-h-screen md:h-screen bg-white dark:bg-black md:border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
+  <main class="achievements flex-1 w-full md:min-h-0 md:min-h-screen md:h-screen bg-white dark:bg-black md:border-l border-gray-200 dark:border-gray-700 flex flex-col md:overflow-hidden transition-colors duration-500 ease-in-out">
     <header class="shrink-0 px-4 py-6 sm:px-6 md:px-8">
       <div class="flex justify-end mb-4">
         <LangToggle />
@@ -8,7 +8,7 @@
       <PageNav />
     </header>
 
-    <div class="flex-1 min-h-0 overflow-y-auto px-4 pb-8 sm:px-6 md:px-8">
+    <div class="page-scroll px-4 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-6 md:flex-1 md:min-h-0 md:px-8">
       <div class="max-w-5xl">
         <div class="flex flex-wrap items-center gap-4 mb-4">
           <div class="relative w-48 sm:w-56">

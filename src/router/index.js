@@ -1,18 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 function resetPageScroll() {
-  document.querySelectorAll('main .overflow-y-auto').forEach((el) => {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' in window ? 'instant' : 'auto' })
+    return
+  }
+
+  document.querySelectorAll('main .page-scroll').forEach((el) => {
     el.scrollTop = 0
   })
-
-  if (window.matchMedia('(max-width: 767px)').matches) {
-    const main = document.querySelector('#app main')
-    if (main) {
-      main.scrollIntoView({ block: 'nearest', behavior: 'instant' in window ? 'instant' : 'auto' })
-    }
-  } else {
-    window.scrollTo({ top: 0, left: 0 })
-  }
 }
 
 const router = createRouter({
