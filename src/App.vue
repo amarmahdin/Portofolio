@@ -1,7 +1,9 @@
 <template>
-  <div id="app" class="flex flex-col min-h-screen bg-[#e8e8e8] dark:bg-black md:flex-row transition-colors duration-500 ease-in-out" :class="{ dark: theme === 'dark', 'theme-transition': themeTransition }">
+  <div id="app" class="flex flex-col h-dvh overflow-hidden bg-[#e8e8e8] dark:bg-black md:flex-row transition-colors duration-500 ease-in-out" :class="{ dark: theme === 'dark', 'theme-transition': themeTransition }">
     <Sidebar />
-    <RouterView />
+    <div class="flex-1 min-h-0 flex flex-col w-full overflow-hidden">
+      <RouterView />
+    </div>
   </div>
 </template>
 
@@ -49,6 +51,7 @@ onMounted(() => {
 
 <style>
 #app {
-  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
 }
 </style>

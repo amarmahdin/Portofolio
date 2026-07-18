@@ -1,5 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+function resetPageScroll() {
+  document.querySelectorAll('main .overflow-y-auto').forEach((el) => {
+    el.scrollTop = 0
+  })
+
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    const main = document.querySelector('#app main')
+    if (main) {
+      main.scrollIntoView({ block: 'nearest', behavior: 'instant' in window ? 'instant' : 'auto' })
+    }
+  } else {
+    window.scrollTo({ top: 0, left: 0 })
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -38,8 +53,17 @@ const router = createRouter({
       redirect: '/',
     },
   ],
-  scrollBehavior() {
-    return { top: 0 }
+  scrollBehavior(_to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        resetPageScroll()
+        resolve(false)
+      })
+    })
   },
 })
 

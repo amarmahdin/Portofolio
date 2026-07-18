@@ -1,9 +1,9 @@
 <template>
-  <aside class="sidebar w-full min-h-screen flex flex-col items-center px-4 py-6 shadow-[2px_0_12px_rgba(0,0,0,0.08)] sm:px-6 sm:py-8 md:w-[280px] md:py-8 md:px-6 transition-colors duration-500 ease-in-out bg-white dark:bg-black">
+  <aside class="sidebar w-full shrink-0 flex flex-col items-center px-4 py-4 shadow-[2px_0_12px_rgba(0,0,0,0.08)] sm:px-6 sm:py-6 md:min-h-screen md:w-[280px] md:py-8 md:px-6 transition-colors duration-500 ease-in-out bg-white dark:bg-black">
     <h1 class="sidebar-title text-2xl font-bold tracking-tight mb-2 md:text-[1.75rem] md:mb-2 text-black dark:text-white transition-colors duration-500 ease-in-out">
       Amar Mahdin
     </h1>
-    <div class="mb-4 mt-9">
+    <div class="mb-2 mt-2 md:mb-4 md:mt-9">
       <div class="w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.12)] sm:w-28 sm:h-28 md:w-32 md:h-32 border-2 border-gray-300 dark:border-gray-600 transition-colors duration-500 ease-in-out">
         <img :src="fotoProfil" alt="Amar Mahdin" class="w-full h-full object-cover mb-4 block" />
       </div>

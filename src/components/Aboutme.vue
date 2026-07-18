@@ -1,5 +1,5 @@
 <template>
-  <main class="aboutme flex-1 min-h-screen h-screen bg-white dark:bg-black border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
+  <main class="aboutme flex-1 min-h-0 w-full md:min-h-screen md:h-screen bg-white dark:bg-black md:border-l border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden transition-colors duration-500 ease-in-out">
     <header class="shrink-0 px-4 py-6 sm:px-6 md:px-8">
       <div class="flex justify-end mb-4">
         <LangToggle />
