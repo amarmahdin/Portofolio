@@ -32,6 +32,19 @@
   }
 }
 
+html.modal-open,
+html.modal-open body {
+  overflow: hidden;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+html.modal-open #app,
+html.modal-open #app main,
+html.modal-open #app .overflow-y-auto {
+  overflow: hidden !important;
+}
+
 /* Theme switch animation */
 @keyframes theme-fade {
   0% { opacity: 1; }

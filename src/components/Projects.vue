@@ -56,12 +56,13 @@
       <Transition name="popup">
         <div
           v-if="carouselOpen"
-          class="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex items-start sm:items-center justify-center pt-16 sm:pt-4 pb-16 sm:pb-4 px-4"
+          class="image-modal fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
           @click.self="closeCarousel"
+          @touchmove.prevent
         >
           <button
             type="button"
-            class="fixed top-3 right-3 sm:top-4 sm:right-4 z-10 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
+            class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
             aria-label="Close"
             @click="closeCarousel"
           >
@@ -70,10 +71,10 @@
             </svg>
           </button>
 
-          <div class="relative flex items-center gap-2 sm:gap-4 max-w-[95vw] sm:max-w-4xl" @click.stop>
+          <div class="relative flex items-center justify-center w-full max-w-4xl max-h-[90dvh]" @click.stop>
             <button
               type="button"
-              class="shrink-0 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
+              class="absolute left-0 sm:left-2 z-10 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
               aria-label="Previous"
               @click="carouselPrev"
             >
@@ -81,10 +82,15 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <img v-if="carouselImages.length" :src="carouselImages[carouselIndex]" alt="Project screenshot" class="max-w-[75vw] sm:max-w-2xl max-h-[calc(100dvh-6rem)] sm:max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl shrink-0" />
+            <img
+              v-if="carouselImages.length"
+              :src="carouselImages[carouselIndex]"
+              alt="Project screenshot"
+              class="max-w-[calc(100vw-7rem)] sm:max-w-2xl max-h-[75dvh] sm:max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+            />
             <button
               type="button"
-              class="shrink-0 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
+              class="absolute right-0 sm:right-2 z-10 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
               aria-label="Next"
               @click="carouselNext"
             >
@@ -94,7 +100,7 @@
             </button>
           </div>
 
-          <p class="fixed bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/80 z-10">{{ carouselIndex + 1 }} / {{ carouselImages.length }}</p>
+          <p class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/80 z-20">{{ carouselIndex + 1 }} / {{ carouselImages.length }}</p>
         </div>
       </Transition>
     </Teleport>
@@ -103,8 +109,9 @@
       <Transition name="popup">
         <div
           v-if="descriptionPopupOpen"
-          class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          class="image-modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto"
           @click.self="closeDescriptionPopup"
+          @touchmove.stop
         >
           <div
             v-if="descriptionPopupProject"
@@ -132,6 +139,7 @@ import { ref, computed, inject, onMounted, onUnmounted } from 'vue'
 import PageNav from './PageNav.vue'
 import LangToggle from './LangToggle.vue'
 import { getSimpleIcon, getIconSvgByKey } from '@/utils/simpleIcons'
+import { useModalScrollLock } from '@/composables/useModalScrollLock'
 import S1 from '../assets/S1.webp'
 import S2 from '../assets/S2.webp'
 import S3 from '../assets/S3.webp'
@@ -184,6 +192,9 @@ const carouselIndex = ref(0)
 const carouselImages = ref([])
 const descriptionPopupOpen = ref(false)
 const descriptionPopupProject = ref(null)
+
+const isModalOpen = computed(() => carouselOpen.value || descriptionPopupOpen.value)
+useModalScrollLock(isModalOpen)
 
 const tirtarimbaCarouselImages = [T1, T2, T3, T4, T5, T6, T7, T8]
 const simasetCarouselImages = [S1, S2, S3, S4, S5, S6, S7, S8, S9, SH1, SH2]

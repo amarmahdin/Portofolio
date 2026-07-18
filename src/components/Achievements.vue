@@ -54,12 +54,13 @@
       <Transition name="popup">
         <div
           v-if="popupImage"
-          class="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex items-start sm:items-center justify-center pt-16 sm:pt-4 pb-4 px-4"
+          class="image-modal fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
           @click.self="closePopup"
+          @touchmove.prevent
         >
           <button
             type="button"
-            class="fixed top-3 right-3 sm:top-4 sm:right-4 z-10 min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
+            class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors touch-manipulation"
             aria-label="Close"
             @click="closePopup"
           >
@@ -70,7 +71,7 @@
           <img
             :src="popupImage"
             alt="Certificate"
-            class="max-w-[95vw] sm:max-w-2xl max-h-[calc(100dvh-5rem)] sm:max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl shrink-0"
+            class="max-w-full max-h-[85dvh] w-auto h-auto object-contain rounded-lg shadow-2xl"
             @click.stop
           />
         </div>
@@ -83,6 +84,7 @@
 import { ref, computed, inject } from 'vue'
 import PageNav from './PageNav.vue'
 import LangToggle from './LangToggle.vue'
+import { useModalScrollLock } from '@/composables/useModalScrollLock'
 import mcfImg from '../assets/mcf.webp'
 import mosImg from '../assets/mos.webp'
 import msibImg from '../assets/msib.webp'
@@ -93,6 +95,9 @@ import sicenceImg from '../assets/sicence.webp'
 const lang = inject('lang')
 const searchQuery = ref('')
 const popupImage = ref(null)
+
+const isPopupOpen = computed(() => Boolean(popupImage.value))
+useModalScrollLock(isPopupOpen)
 
 const openPopup = (src) => { popupImage.value = src }
 const closePopup = () => { popupImage.value = null }
