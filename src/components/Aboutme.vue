@@ -8,13 +8,7 @@
         </div>
       </div>
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:text-4xl transition-colors duration-500 ease-in-out">{{ t.pageTitle }}</h1>
-      <nav class="flex flex-wrap gap-4 sm:gap-6 border-b border-gray-200 dark:border-gray-700 pb-3 transition-colors duration-500 ease-in-out">
-        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('home')">{{ t.navHome }}</a>
-        <a href="#" class="nav-link nav-link-active text-sm font-medium">{{ t.navAbout }}</a>
-        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('achievements')">{{ t.navAchievements }}</a>
-        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('projects')">{{ t.navProjects }}</a>
-        <a href="#" class="nav-link text-sm font-medium" @click.prevent="setPage('contact')">{{ t.navContact }}</a>
-      </nav>
+      <PageNav :lang="lang" />
     </header>
 
     <div class="flex-1 min-h-0 overflow-y-auto px-4 pb-8 sm:px-6 md:px-8">
@@ -134,14 +128,14 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed } from 'vue'
+import PageNav from './PageNav.vue'
 const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
 const itplnImg = new URL('../assets/itpln.webp', import.meta.url).href
 const iconplusImg = new URL('../assets/iconplus.webp', import.meta.url).href
 const infiniteImg = new URL('../assets/infinite.webp', import.meta.url).href
 
 const lang = ref('en')
-const setPage = inject('setPage')
 const showResponsibilities = ref(false)
 const showResponsibilities2 = ref(false)
 const showResponsibilities3 = ref(false)
@@ -266,30 +260,6 @@ const t = computed(() => translations[lang.value] || translations.en)
 .lang-btn-active:hover {
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   box-shadow: 0 4px 12px rgba(22, 163, 74, 0.5);
-}
-
-.nav-link {
-  color: #6b7280;
-  transition: color 0.25s ease;
-}
-.nav-link:hover {
-  color: #374151;
-}
-:global(.dark) .nav-link {
-  color: #9ca3af;
-}
-:global(.dark) .nav-link:hover {
-  color: #e5e7eb;
-}
-.nav-link-active {
-  color: #16a34a;
-  border-bottom: 2px solid #16a34a;
-  padding-bottom: 0.25rem;
-  margin-bottom: -0.375rem;
-}
-:global(.dark) .nav-link-active {
-  color: #22c55e;
-  border-bottom-color: #22c55e;
 }
 
 .career-card {
