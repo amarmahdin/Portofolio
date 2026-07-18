@@ -24,99 +24,33 @@
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 transition-colors duration-500 ease-in-out">{{ t.careerSubtitle }}</p>
 
       <div class="max-w-5xl">
-        <div class="career-card flex gap-4 p-4 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-500 transition-colors duration-500 ease-in-out">
+        <div
+          v-for="(job, index) in localizedCareers"
+          :key="index"
+          class="career-card flex gap-4 p-4 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-500 transition-colors duration-500 ease-in-out"
+          :class="{ 'mt-4': index > 0 }"
+        >
           <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 flex items-center justify-center overflow-hidden" aria-hidden="true">
-            <img :src="simasetImg" alt="" class="w-full h-full object-cover" />
+            <img v-if="job.image" :src="job.image" alt="" class="w-full h-full object-cover" />
+            <span v-else class="text-xs font-bold text-blue-700 dark:text-blue-300">{{ job.initials }}</span>
           </div>
           <div class="flex-1 min-w-0">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white sm:text-lg mb-1 transition-colors duration-500 ease-in-out">{{ t.role }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-500 ease-in-out">{{ t.company }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-500 mb-2 transition-colors duration-500 ease-in-out">{{ t.period }} · {{ t.duration }} · {{ t.type }} · {{ t.workMode }}</p>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white sm:text-lg mb-1 transition-colors duration-500 ease-in-out">{{ job.role }}</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-500 ease-in-out">{{ job.company }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-500 mb-2 transition-colors duration-500 ease-in-out">{{ job.period }} · {{ job.meta }}</p>
             <button
               type="button"
               class="flex items-center gap-1.5 text-xs font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors cursor-pointer"
-              @click="showResponsibilities = !showResponsibilities"
+              @click="toggleResponsibilities(index)"
             >
-              <span class="inline-flex transition-transform duration-200" :class="{ 'rotate-90': showResponsibilities }">
+              <span class="inline-flex transition-transform duration-200" :class="{ 'rotate-90': expanded[index] }">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-              {{ showResponsibilities ? t.hideResponsibilities : t.showResponsibilities }}
+              {{ expanded[index] ? t.hideResponsibilities : t.showResponsibilities }}
             </button>
-            <ul v-if="showResponsibilities" class="mt-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500 ease-in-out list-disc list-inside space-y-1 pl-1" v-html="t.responsibilities"></ul>
-          </div>
-        </div>
-
-        <div class="career-card flex gap-4 p-4 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-500 transition-colors duration-500 ease-in-out mt-4">
-          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 flex items-center justify-center overflow-hidden" aria-hidden="true">
-            <img :src="itplnImg" alt="" class="w-full h-full object-cover" />
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white sm:text-lg mb-1 transition-colors duration-500 ease-in-out">{{ t.role2 }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-500 ease-in-out">{{ t.company2 }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-500 mb-2 transition-colors duration-500 ease-in-out">{{ t.period2 }} · {{ t.duration2 }} · {{ t.type2 }} · {{ t.workMode2 }}</p>
-            <button
-              type="button"
-              class="flex items-center gap-1.5 text-xs font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors cursor-pointer"
-              @click="showResponsibilities2 = !showResponsibilities2"
-            >
-              <span class="inline-flex transition-transform duration-200" :class="{ 'rotate-90': showResponsibilities2 }">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              {{ showResponsibilities2 ? t.hideResponsibilities : t.showResponsibilities }}
-            </button>
-            <ul v-if="showResponsibilities2" class="mt-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500 ease-in-out list-disc list-inside space-y-1 pl-1" v-html="t.responsibilities2"></ul>
-          </div>
-        </div>
-
-        <div class="career-card flex gap-4 p-4 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-500 transition-colors duration-500 ease-in-out mt-4">
-          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 flex items-center justify-center overflow-hidden" aria-hidden="true">
-            <img :src="iconplusImg" alt="" class="w-full h-full object-cover" />
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white sm:text-lg mb-1 transition-colors duration-500 ease-in-out">{{ t.role3 }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-500 ease-in-out">{{ t.company3 }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-500 mb-2 transition-colors duration-500 ease-in-out">{{ t.period3 }} · {{ t.duration3 }} · {{ t.type3 }} · {{ t.workMode3 }}</p>
-            <button
-              type="button"
-              class="flex items-center gap-1.5 text-xs font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors cursor-pointer"
-              @click="showResponsibilities3 = !showResponsibilities3"
-            >
-              <span class="inline-flex transition-transform duration-200" :class="{ 'rotate-90': showResponsibilities3 }">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              {{ showResponsibilities3 ? t.hideResponsibilities : t.showResponsibilities }}
-            </button>
-            <ul v-if="showResponsibilities3" class="mt-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500 ease-in-out list-disc list-inside space-y-1 pl-1" v-html="t.responsibilities3"></ul>
-          </div>
-        </div>
-
-        <div class="career-card flex gap-4 p-4 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-500 transition-colors duration-500 ease-in-out mt-4">
-          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 flex items-center justify-center overflow-hidden" aria-hidden="true">
-            <img :src="infiniteImg" alt="" class="w-full h-full object-cover" />
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white sm:text-lg mb-1 transition-colors duration-500 ease-in-out">{{ t.role4 }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-500 ease-in-out">{{ t.company4 }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-500 mb-2 transition-colors duration-500 ease-in-out">{{ t.period4 }} · {{ t.duration4 }} · {{ t.type4 }} · {{ t.workMode4 }}</p>
-            <button
-              type="button"
-              class="flex items-center gap-1.5 text-xs font-medium text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors cursor-pointer"
-              @click="showResponsibilities4 = !showResponsibilities4"
-            >
-              <span class="inline-flex transition-transform duration-200" :class="{ 'rotate-90': showResponsibilities4 }">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              {{ showResponsibilities4 ? t.hideResponsibilities : t.showResponsibilities }}
-            </button>
-            <ul v-if="showResponsibilities4" class="mt-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500 ease-in-out list-disc list-inside space-y-1 pl-1" v-html="t.responsibilities4"></ul>
+            <ul v-if="expanded[index]" class="mt-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500 ease-in-out list-disc list-inside space-y-1 pl-1" v-html="job.responsibilities"></ul>
           </div>
         </div>
       </div>
@@ -128,104 +62,175 @@
 import { ref, computed, inject } from 'vue'
 import PageNav from './PageNav.vue'
 import LangToggle from './LangToggle.vue'
-const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
+
 const itplnImg = new URL('../assets/itpln.webp', import.meta.url).href
+const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
+const enjineringImg = new URL('../assets/enjinering.webp', import.meta.url).href
 const iconplusImg = new URL('../assets/iconplus.webp', import.meta.url).href
 const infiniteImg = new URL('../assets/infinite.webp', import.meta.url).href
 
 const lang = inject('lang')
-const showResponsibilities = ref(false)
-const showResponsibilities2 = ref(false)
-const showResponsibilities3 = ref(false)
-const showResponsibilities4 = ref(false)
+const expanded = ref({})
+
+const toggleResponsibilities = (index) => {
+  expanded.value[index] = !expanded.value[index]
+}
+
+const careers = [
+  {
+    image: itplnImg,
+    id: {
+      role: 'IT Infrastructure & Web Developer',
+      company: 'BPTI — Institut Teknologi PLN, Jakarta',
+      period: 'Jul 2026 - Sekarang',
+      meta: 'Kontrak · Onsite',
+      responsibilities: '<li>Mengelola infrastruktur jaringan kampus dan server Linux (Nginx, PM2)</li><li>Deployment dan maintenance aplikasi web institusi</li><li>Backup sistem dan pengamanan infrastruktur IT</li>',
+    },
+    en: {
+      role: 'IT Infrastructure & Web Developer',
+      company: 'BPTI — Institut Teknologi PLN, Jakarta',
+      period: 'Jul 2026 - Present',
+      meta: 'Contract · Onsite',
+      responsibilities: '<li>Managed campus network infrastructure and Linux servers (Nginx, PM2)</li><li>Deployed and maintained institutional web applications</li><li>Implemented system backups and IT infrastructure security</li>',
+    },
+  },
+  {
+    image: null,
+    initials: 'TR',
+    id: {
+      role: 'Full Stack Developer — Tirtarimba Network Center',
+      company: 'PDAM Tirta Rimba',
+      period: 'Jan - Apr 2026',
+      meta: 'Kontrak · Onsite',
+      responsibilities: '<li>Membangun aplikasi web dengan Vue.js, Tailwind CSS, Node.js, dan MySQL</li><li>Merancang RESTful API dan arsitektur backend</li><li>Mengoptimasi skema database untuk performa dan integritas data</li>',
+    },
+    en: {
+      role: 'Full Stack Developer — Tirtarimba Network Center',
+      company: 'PDAM Tirta Rimba',
+      period: 'Jan - Apr 2026',
+      meta: 'Contract · Onsite',
+      responsibilities: '<li>Built web applications with Vue.js, Tailwind CSS, Node.js, and MySQL</li><li>Designed RESTful APIs and backend architecture</li><li>Optimized database schemas for performance and data integrity</li>',
+    },
+  },
+  {
+    image: simasetImg,
+    id: {
+      role: 'Web & Mobile Developer — SIMASET',
+      company: 'PT Malaka Utama, Bandung',
+      period: 'Sept 2025 - Jan 2026',
+      meta: 'Paruh Waktu · Remote',
+      responsibilities: '<li>Mengembangkan aplikasi web dan mobile SIMASET end-to-end</li><li>Frontend React/Tailwind dan backend Node.js/Express</li><li>Aplikasi mobile Flutter untuk Android & iOS, deploy ke VPS</li>',
+    },
+    en: {
+      role: 'Web & Mobile Developer — SIMASET',
+      company: 'PT Malaka Utama, Bandung',
+      period: 'Sept 2025 - Jan 2026',
+      meta: 'Part-time · Remote',
+      responsibilities: '<li>Delivered end-to-end SIMASET web and mobile applications</li><li>React/Tailwind frontend and Node.js/Express backend</li><li>Flutter mobile apps for Android & iOS, deployed to VPS</li>',
+    },
+  },
+  {
+    image: itplnImg,
+    id: {
+      role: 'Student Worker',
+      company: 'Divisi Sistem Data & Informasi — ITPLN, Jakarta',
+      period: 'Jan - Aug 2025',
+      meta: 'Kontrak · Onsite',
+      responsibilities: '<li>Mengembangkan antarmuka web internal dengan WordPress</li><li>Monitoring keamanan jaringan dan backup sistem informasi</li><li>Membantu pembuatan materi informasi internal tim</li>',
+    },
+    en: {
+      role: 'Student Worker',
+      company: 'Data & Information Systems Division — ITPLN, Jakarta',
+      period: 'Jan - Aug 2025',
+      meta: 'Contract · Onsite',
+      responsibilities: '<li>Developed internal web interfaces using WordPress</li><li>Monitored network security and managed system backups</li><li>Assisted in creating internal team informational materials</li>',
+    },
+  },
+  {
+    image: enjineringImg,
+    id: {
+      role: 'Frontend Developer — Aplikasi Newvc',
+      company: 'PLN Enjiniring, Jakarta',
+      period: 'Nov - Dec 2024',
+      meta: 'Internship · Onsite',
+      responsibilities: '<li>Mengembangkan fitur aplikasi enterprise dengan Vue.js dan Tailwind CSS</li><li>Menerjemahkan wireframe menjadi komponen UI responsif dan reusable</li><li>Integrasi API dan testing cross-device</li>',
+    },
+    en: {
+      role: 'Frontend Developer — Newvc Application',
+      company: 'PLN Enjiniring, Jakarta',
+      period: 'Nov - Dec 2024',
+      meta: 'Internship · Onsite',
+      responsibilities: '<li>Built enterprise application features with Vue.js and Tailwind CSS</li><li>Translated wireframes into responsive, reusable UI components</li><li>API integration and cross-device testing</li>',
+    },
+  },
+  {
+    image: iconplusImg,
+    id: {
+      role: 'Frontend Developer — Aplikasi DIAMOND',
+      company: 'PLN Icon Plus — Divisi Korporat 1, Jakarta',
+      period: 'Aug - Nov 2024',
+      meta: 'Internship · Onsite',
+      responsibilities: '<li>Membangun UI interaktif Vue.js/Tailwind dari desain UI/UX</li><li>Komponen modular dengan kompatibilitas cross-browser</li><li>Integrasi RESTful API dan kolaborasi dengan tim backend</li>',
+    },
+    en: {
+      role: 'Frontend Developer — DIAMOND Application',
+      company: 'PLN Icon Plus — Corporate Division 1, Jakarta',
+      period: 'Aug - Nov 2024',
+      meta: 'Internship · Onsite',
+      responsibilities: '<li>Built interactive Vue.js/Tailwind UI from UI/UX designs</li><li>Modular components with cross-browser compatibility</li><li>RESTful API integration and backend team collaboration</li>',
+    },
+  },
+  {
+    image: infiniteImg,
+    id: {
+      role: 'Web Developer — Studi Independen Batch 6',
+      company: 'Infinite Learning, Batam',
+      period: 'Feb - Jun 2024',
+      meta: 'Program Studi · Online',
+      responsibilities: '<li>Proyek tim web dengan React.js dan Tailwind CSS</li><li>Mengimplementasikan wireframe menjadi UI interaktif</li><li>Bootcamp intensif pengembangan web modern</li>',
+    },
+    en: {
+      role: 'Web Developer — Study Independent Batch 6',
+      company: 'Infinite Learning, Batam',
+      period: 'Feb - Jun 2024',
+      meta: 'Study Program · Online',
+      responsibilities: '<li>Team web projects with React.js and Tailwind CSS</li><li>Implemented wireframes into interactive UI components</li><li>Intensive modern web development bootcamp</li>',
+    },
+  },
+]
+
+const localizedCareers = computed(() =>
+  careers.map((item) => {
+    const copy = item[lang.value] || item.en
+    return {
+      image: item.image,
+      initials: item.initials,
+      ...copy,
+    }
+  })
+)
 
 const translations = {
   id: {
     pageTitle: 'Tentang Saya',
-    navHome: 'Beranda',
-    navAchievements: 'Prestasi',
-    navProjects: 'Proyek Saya',
-    navAbout: 'Tentang Saya',
-    navContact: 'Kontak',
-    intro1: 'Halo! Terima kasih telah mengunjungi situs pribadi saya. Saya Amar Mahdin, Fullstack Developer yang senang membangun produk software yang berdampak. Stack saya meliputi teknologi frontend modern seperti Vue.js, React.js, dan Tailwind CSS, serta pengembangan backend dengan Node.js dan Express.js. Saya juga mengembangkan aplikasi mobile berperforma tinggi dengan Flutter.',
-    intro2: 'Saya senang membuat solusi yang ramah pengguna dan berperforma baik. Baik membangun antarmuka yang intuitif maupun merancang layanan backend, saya berusaha membawa efisiensi dan kejelasan di setiap lapisan aplikasi. Saya pembelajar cepat yang berkembang di lingkungan dinamis dan senang menyelesaikan masalah kompleks secara kolaboratif.',
-    intro3: 'Saya percaya komunikasi yang baik dan sinergi tim adalah kunci kesuksesan dalam pengembangan software. Pengalaman saya membentuk tidak hanya keterampilan teknis dan analitis tetapi juga kualitas kepemimpinan.',
+    intro1: 'Halo! Terima kasih telah mengunjungi situs pribadi saya. Saya Amar Mahdin, Fullstack Developer yang senang membangun produk software yang berdampak. Stack saya meliputi Vue.js, React.js, Tailwind CSS, Node.js, Express.js, dan Flutter.',
+    intro2: 'Saya senang membuat solusi yang ramah pengguna dan berperforma baik — dari antarmuka intuitif hingga layanan backend yang scalable. Saya pembelajar cepat yang nyaman bekerja di lingkungan dinamis.',
+    intro3: 'Saya percaya komunikasi yang baik dan sinergi tim adalah kunci kesuksesan dalam pengembangan software.',
     careerTitle: 'Karier',
     careerSubtitle: 'Perjalanan profesional saya',
-    role: 'Web & Mobile Developer',
-    company: 'PT Malaka Utama - Bandung, Indonesia',
-    period: 'Sept 2025 - Jan 2026',
-    duration: '3 Bulan',
-    type: 'Paruh waktu',
-    workMode: 'Remote',
     showResponsibilities: 'Tampilkan Tanggung Jawab',
     hideResponsibilities: 'Sembunyikan Tanggung Jawab',
-    responsibilities: '<li>Membangun website dan aplikasi mobile untuk sistem manajemen aset</li><li>Mengembangkan modul pengguna, manajemen mobil, dan reimburse</li><li>Mendesain antarmuka responsif dan user-friendly</li><li>Mengintegrasikan fitur antar modul secara optimal</li>',
-    role2: 'Student Worker',
-    company2: 'Institut Teknologi PLN - Jakarta Barat, Indonesia',
-    period2: 'Jan - Aug 2025',
-    duration2: '6 Bulan',
-    type2: 'Kontrak',
-    workMode2: 'Di tempat',
-    responsibilities2: '<li>Mendesain antarmuka WEB</li><li>Memantau malware yang terdeteksi di jaringan LAN</li><li>Backup sistem informasi</li><li>Membantu dan membuat poster informasi</li><li>Mendeteksi paket data yang tidak normal</li>',
-    role3: 'Frontend Developer',
-    company3: 'PLN Icon Plus - Jakarta Selatan, Indonesia',
-    period3: 'Aug - Nov 2024',
-    duration3: '3 Bulan',
-    type3: 'Internship',
-    workMode3: 'Di tempat',
-    responsibilities3: '<li>Mengembangkan antarmuka frontend</li><li>Berkolaborasi dengan tim development</li>',
-    role4: 'Web Development',
-    company4: 'Infinite Learning - Batam, Indonesia',
-    period4: 'Feb - Jun 2024',
-    duration4: '5 Bulan',
-    type4: 'Program Studi',
-    workMode4: 'Online',
-    responsibilities4: '<li>Memahami dasar-dasar pengembangan web</li><li>Mengerjakan proyek web berbasis studi kasus</li>'
   },
   en: {
     pageTitle: 'Aboutme',
-    navHome: 'Home',
-    navAchievements: 'Achievements',
-    navProjects: 'My Projects',
-    navAbout: 'Aboutme',
-    navContact: 'Contact',
-    intro1: "Hello there! Thank you for visiting my personal website. I'm Amar Mahdin, a Fullstack Developer with a passion for building impactful software products. My stack includes modern frontend technologies like Vue.js, React.js, and Tailwind CSS, as well as robust backend development using Node.js and Express.js. Additionally, I develop high-performance mobile applications using Flutter.",
-    intro2: "I enjoy creating solutions that are both user-friendly and performant. Whether it's building intuitive interfaces or architecting backend services, I aim to bring efficiency and clarity to every layer of the application. I am a fast learner who thrives in dynamic environments and I enjoy solving complex problems collaboratively.",
-    intro3: "I believe that great communication and team synergy are key to success in software development. My experience has shaped not only my technical and analytical skills but also my leadership qualities.",
+    intro1: "Hello there! Thank you for visiting my personal website. I'm Amar Mahdin, a Fullstack Developer passionate about building impactful software products. My stack includes Vue.js, React.js, Tailwind CSS, Node.js, Express.js, and Flutter.",
+    intro2: 'I enjoy creating user-friendly, performant solutions — from intuitive interfaces to scalable backend services. I am a fast learner who thrives in dynamic environments.',
+    intro3: 'I believe great communication and team synergy are key to success in software development.',
     careerTitle: 'Career',
     careerSubtitle: 'My professional journey',
-    role: 'Web & Mobile Developer',
-    company: 'PT Malaka Utama - Bandung, Indonesia',
-    period: 'Sept 2025 - Jan 2026',
-    duration: '3 Months',
-    type: 'Part-time',
-    workMode: 'Remote',
     showResponsibilities: 'Show Responsibilities',
     hideResponsibilities: 'Hide Responsibilities',
-    responsibilities: '<li>Built web and mobile applications for asset management system</li><li>Developed modules for user management, vehicle management, and reimbursement</li><li>Designed responsive and user-friendly interfaces</li><li>Integrated features across modules seamlessly</li>',
-    role2: 'Student Worker',
-    company2: 'Institut Teknologi PLN - Jakarta Barat, Indonesia',
-    period2: 'Jan - Aug 2025',
-    duration2: '6 Months',
-    type2: 'Contract',
-    workMode2: 'Onsite',
-    responsibilities2: '<li>Designing WEB interfaces</li><li>Monitoring malware detected on the LAN network</li><li>Backing up information systems</li><li>Assisting with and creating informational posters</li><li>Detecting abnormal data packets</li>',
-    role3: 'Frontend Developer',
-    company3: 'PLN Icon Plus - Jakarta Selatan, Indonesia',
-    period3: 'Aug - Nov 2024',
-    duration3: '3 Months',
-    type3: 'Internship',
-    workMode3: 'Onsite',
-    responsibilities3: '<li>Developing frontend interfaces</li><li>Collaborating with development team</li>',
-    role4: 'Web Development',
-    company4: 'Infinite Learning - Batam, Indonesia',
-    period4: 'Feb - Jun 2024',
-    duration4: '5 Months',
-    type4: 'Study Program',
-    workMode4: 'Online',
-    responsibilities4: '<li>Understanding web development fundamentals</li><li>Completing case-study based web projects</li>'
-  }
+  },
 }
 
 const t = computed(() => translations[lang.value] || translations.en)
