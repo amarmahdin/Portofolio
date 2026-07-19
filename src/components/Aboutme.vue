@@ -98,14 +98,14 @@ const careers = [
   {
     image: pdamImg,
     id: {
-      role: 'Full Stack Developer — Tirtarimba Network Center',
+      role: 'Full Stack Developer — Aplikasi Tirtarimba Network Center',
       company: 'PDAM Tirta Rimba, Baubau',
       period: 'Jan - Apr 2026',
       meta: 'Paruh Waktu · Remote',
       responsibilities: '<li>Membangun aplikasi web dengan Vue.js, Tailwind CSS, Node.js, dan MySQL</li><li>Merancang RESTful API dan arsitektur backend</li><li>Mengoptimasi skema database untuk performa dan integritas data</li>',
     },
     en: {
-      role: 'Full Stack Developer — Tirtarimba Network Center',
+      role: 'Full Stack Developer — Tirtarimba Network Center Application',
       company: 'PDAM Tirta Rimba, Baubau',
       period: 'Jan - Apr 2026',
       meta: 'Part-time · Remote',
@@ -115,14 +115,14 @@ const careers = [
   {
     image: simasetImg,
     id: {
-      role: 'Web & Mobile Developer — SIMASET',
+      role: 'Web & Mobile Developer — Aplikai SIMASET',
       company: 'PT Malaka Utama, Bandung',
       period: 'Sept 2025 - Jan 2026',
       meta: 'Paruh Waktu · Remote',
       responsibilities: '<li>Mengembangkan aplikasi web dan mobile SIMASET end-to-end</li><li>Frontend React/Tailwind dan backend Node.js/Express</li><li>Aplikasi mobile Flutter untuk Android & iOS, deploy ke VPS</li>',
     },
     en: {
-      role: 'Web & Mobile Developer — SIMASET',
+      role: 'Web & Mobile Developer — SIMASET Application',
       company: 'PT Malaka Utama, Bandung',
       period: 'Sept 2025 - Jan 2026',
       meta: 'Part-time · Remote',
