@@ -30,7 +30,7 @@
               <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-500 ease-in-out">{{ item.title }}</h3>
               <button
                 type="button"
-                class="text-left w-full text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3 transition-colors duration-500 ease-in-out hover:text-green-600 dark:hover:text-green-400 cursor-pointer"
+                class="text-left text-justify w-full text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-3 transition-colors duration-500 ease-in-out hover:text-green-600 dark:hover:text-green-400 cursor-pointer"
                 :title="getProjectDescription(item)"
                 @click="openDescriptionPopup(index)"
               >
@@ -119,7 +119,7 @@
             @click.stop
           >
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{ descriptionPopupProject.title }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{{ getProjectDescription(descriptionPopupProject) }}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 text-justify">{{ getProjectDescription(descriptionPopupProject) }}</p>
             <button
               type="button"
               class="w-full py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-medium transition-colors"
@@ -255,10 +255,10 @@ const projectDescriptions = {
 }
 
 const projects = [
+  { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
   { title: 'TIRTARIMBA Network Center', descriptionKey: 'tirtarimba', image: T1, techStack: ['vuedotjs', 'tailwindcss', 'express', 'nodedotjs', 'mysql'], carouselImages: tirtarimbaCarouselImages },
   { title: 'SIMASET', descriptionKey: 'simaset', image: S1, techStack: ['react', 'tailwindcss', 'express', 'nodedotjs', 'mysql', 'flutter'], carouselImages: simasetCarouselImages },
   { title: 'DIAMOND', descriptionKey: 'diamond', image: D1, techStack: ['vuedotjs', 'tailwindcss'], carouselImages: diamondCarouselImages },
-  { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
   { title: 'OASIS DESTINATION', descriptionKey: 'oasis', image: O1, techStack: ['react', 'tailwindcss', 'express'], carouselImages: oasisCarouselImages },
   { title: 'AspalKita', descriptionKey: 'aspal', image: A1, techStack: ['html5', 'css', 'javascript'], carouselImages: aspalCarouselImages }
 ]
