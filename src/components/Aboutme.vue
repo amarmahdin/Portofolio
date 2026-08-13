@@ -80,7 +80,7 @@ const careers = [
   {
     image: itplnImg,
     id: {
-      role: 'IT Infrastructure & Web Developer',
+      role: 'IT Infrastructure & FUll Stack Developer',
       company: 'BPTI — Institut Teknologi PLN, Jakarta Barat',
       period: 'Jul 2026 - Sekarang',
       meta: 'Kontrak · Onsite',
