@@ -185,6 +185,13 @@ import B5 from '../assets/B5.webp'
 import B6 from '../assets/B6.webp'
 import B7 from '../assets/B7.webp'
 import B8 from '../assets/B8.webp'
+import SI1 from '../assets/SI1.webp'
+import SI2 from '../assets/SI2.webp'
+import SI3 from '../assets/SI3.webp'
+import SI4 from '../assets/SI4.webp'
+import SI5 from '../assets/SI5.webp'
+import SI6 from '../assets/SI6.webp'
+import SI7 from '../assets/SI7.webp'
 import T1 from '../assets/T1.webp'
 import T2 from '../assets/T2.webp'
 import T3 from '../assets/T3.webp'
@@ -204,6 +211,7 @@ const descriptionPopupProject = ref(null)
 const isModalOpen = computed(() => carouselOpen.value || descriptionPopupOpen.value)
 useModalScrollLock(isModalOpen)
 
+const siperkultarouselImages = [SI1, SI2, SI3, SI4, SI5, SI6, SI7]
 const tirtarimbaCarouselImages = [T1, T2, T3, T4, T5, T6, T7, T8]
 const simasetCarouselImages = [S1, S2, S3, S4, S5, S6, S7, S8, S9, SH1, SH2]
 const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8]
@@ -222,6 +230,7 @@ const techIconMap = {
   flutter: { key: 'siFlutter', color: '#02569B' },
   php: { key: 'siPhp', color: '#777BB4' },
   bootstrap: { key: 'siBootstrap', color: '#7952B3', displayName: 'Bootstrap 5' },
+  codeigniter: { key: 'siCodeigniter', color: '#EF4223', displayName: 'CI 3' },
   html5: { key: 'siHtml5', color: '#E34F26', displayName: 'HTML5' },
   css: { key: 'siCss', color: '#1572B6', displayName: 'CSS' },
   javascript: { key: 'siJavascript', color: '#F7DF1E', displayName: 'JavaScript' }
@@ -251,10 +260,15 @@ const projectDescriptions = {
   abon: {
     en: 'ABON is an enterprise web platform engineered to simplify employee attendance tracking, leave requests, and overtime management. The system automates supervisor approval workflows and optimizes server storage to ensure efficient, secure institutional administration.',
     id: 'ABON adalah platform web enterprise yang dirancang untuk menyederhanakan pencatatan kehadiran karyawan, pengajuan cuti, dan manajemen lembur. Sistem ini mengotomatiskan alur persetujuan supervisor dan mengoptimalkan penyimpanan server untuk memastikan administrasi institusi yang efisien dan aman.'
+  },
+  siperkul: {
+    en: 'SIPERKUL is a web-based academic scheduling platform designed to streamline classroom allocations and live room tracking. The application bridges communication between faculty and administration to eliminate scheduling conflicts and improve campus operational efficiency.',
+    id: 'SIPERKUL adalah platform penjadwalan akademik berbasis web yang dirancang untuk menyederhanakan alokasi ruang kelas dan pelacakan ruangan secara langsung. Aplikasi ini menjembatani komunikasi antara dosen dan administrasi untuk menghilangkan konflik penjadwalan dan meningkatkan efisiensi operasional kampus.'
   }
 }
 
 const projects = [
+  { title: 'SIPERKUL', descriptionKey: 'siperkul', image: SI1, techStack: ['codeigniter', 'javascript', 'bootstrap', 'mysql'], carouselImages: siperkultarouselImages },
   { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
   { title: 'TIRTARIMBA Network Center', descriptionKey: 'tirtarimba', image: T1, techStack: ['vuedotjs', 'tailwindcss', 'express', 'nodedotjs', 'mysql'], carouselImages: tirtarimbaCarouselImages },
   { title: 'SIMASET', descriptionKey: 'simaset', image: S1, techStack: ['react', 'tailwindcss', 'express', 'nodedotjs', 'mysql', 'flutter'], carouselImages: simasetCarouselImages },
