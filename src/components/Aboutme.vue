@@ -87,7 +87,7 @@ const careers = [
       responsibilities: '<li>Mengelola infrastruktur jaringan kampus dan server Linux (Nginx, PM2)</li><li>Deployment dan maintenance aplikasi web institusi</li><li>Backup sistem dan pengamanan infrastruktur IT</li>',
     },
     en: {
-      role: 'IT Infrastructure & Web Developer',
+      role: 'IT Infrastructure & Full stack Developer',
       company: 'BPTI — Institut Teknologi PLN, Jakarta Barat',
       period: 'Jul 2026 - Present',
       meta: 'Contract · Onsite',
