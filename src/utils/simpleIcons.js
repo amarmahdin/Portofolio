@@ -1,5 +1,6 @@
 import {
   siBootstrap,
+  siCodeigniter,
   siCss,
   siExpress,
   siFirebase,
@@ -29,6 +30,7 @@ const linkedinIcon = {
 
 const iconRegistry = {
   siBootstrap,
+  siCodeigniter,
   siCss,
   siExpress,
   siFirebase,
@@ -68,6 +70,7 @@ const slugToKey = {
   git: 'siGit',
   laravel: 'siLaravel',
   php: 'siPhp',
+  codeigniter: 'siCodeigniter',
   gmail: 'siGmail',
   instagram: 'siInstagram',
   tiktok: 'siTiktok',
