@@ -68,7 +68,6 @@ const pdamImg = new URL('../assets/pdam.webp', import.meta.url).href
 const simasetImg = new URL('../assets/simaset.webp', import.meta.url).href
 const enjineringImg = new URL('../assets/enjinering.webp', import.meta.url).href
 const iconplusImg = new URL('../assets/iconplus.webp', import.meta.url).href
-const infiniteImg = new URL('../assets/infinite.webp', import.meta.url).href
 
 const lang = inject('lang')
 const expanded = ref({})
@@ -178,23 +177,6 @@ const careers = [
       period: 'Aug - Nov 2024',
       meta: 'Internship · Onsite',
       responsibilities: '<li>Built interactive Vue.js/Tailwind UI from UI/UX designs</li><li>Modular components with cross-browser compatibility</li><li>RESTful API integration and backend team collaboration</li>',
-    },
-  },
-  {
-    image: infiniteImg,
-    id: {
-      role: 'Web Developer — Studi Independen Batch 6',
-      company: 'Infinite Learning, Batam',
-      period: 'Feb - Jun 2024',
-      meta: 'Program Studi · Online',
-      responsibilities: '<li>Proyek tim web dengan React.js dan Tailwind CSS</li><li>Mengimplementasikan wireframe menjadi UI interaktif</li><li>Bootcamp intensif pengembangan web modern</li>',
-    },
-    en: {
-      role: 'Web Developer — Study Independent Batch 6',
-      company: 'Infinite Learning, Batam',
-      period: 'Feb - Jun 2024',
-      meta: 'Study Program · Online',
-      responsibilities: '<li>Team web projects with React.js and Tailwind CSS</li><li>Implemented wireframes into interactive UI components</li><li>Intensive modern web development bootcamp</li>',
     },
   },
 ]
