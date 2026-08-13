@@ -177,6 +177,14 @@ import A5 from '../assets/A5.webp'
 import A6 from '../assets/A6.webp'
 import A7 from '../assets/A7.webp'
 import A8 from '../assets/A8.webp'
+import B1 from '../assets/B1.webp'
+import B2 from '../assets/B2.webp'
+import B3 from '../assets/B3.webp'
+import B4 from '../assets/B4.webp'
+import B5 from '../assets/B5.webp'
+import B6 from '../assets/B6.webp'
+import B7 from '../assets/B7.webp'
+import B8 from '../assets/B8.webp'
 import T1 from '../assets/T1.webp'
 import T2 from '../assets/T2.webp'
 import T3 from '../assets/T3.webp'
@@ -201,6 +209,7 @@ const simasetCarouselImages = [S1, S2, S3, S4, S5, S6, S7, S8, S9, SH1, SH2]
 const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8]
 const oasisCarouselImages = [O1, O2, O3, O4, O5, O6, O7, O8, O9, O10]
 const aspalCarouselImages = [A1, A2, A3, A4, A5, A6, A7, A8]
+const abonCarouselImages = [B1, B2, B3, B4, B5, B6, B7, B8]
 
 const techIconMap = {
   react: { key: 'siReact', color: '#61DAFB', displayName: 'React.js' },
@@ -212,6 +221,7 @@ const techIconMap = {
   laravel: { key: 'siLaravel', color: '#FF2D20' },
   flutter: { key: 'siFlutter', color: '#02569B' },
   php: { key: 'siPhp', color: '#777BB4' },
+  bootstrap: { key: 'siBootstrap', color: '#7952B3', displayName: 'Bootstrap 5' },
   html5: { key: 'siHtml5', color: '#E34F26', displayName: 'HTML5' },
   css: { key: 'siCss', color: '#1572B6', displayName: 'CSS' },
   javascript: { key: 'siJavascript', color: '#F7DF1E', displayName: 'JavaScript' }
@@ -237,6 +247,10 @@ const projectDescriptions = {
   aspal: {
     en: 'AspalKita is a web-based platform designed to facilitate community participation in reporting road infrastructure damage in real-time. The application bridges communication between citizens and local government to accelerate repair processes and improve regional development transparency.',
     id: 'AspalKita adalah platform berbasis web yang dirancang untuk memfasilitasi partisipasi masyarakat dalam melaporkan kerusakan infrastruktur jalan secara real-time. Aplikasi ini menjembatani komunikasi antara warga dan pemerintah daerah untuk mempercepat proses perbaikan dan meningkatkan transparansi pembangunan daerah.'
+  },
+  abon: {
+    en: 'ABON is an enterprise web platform engineered to simplify employee attendance tracking, leave requests, and overtime management. The system automates supervisor approval workflows and optimizes server storage to ensure efficient, secure institutional administration.',
+    id: 'ABON adalah platform web enterprise yang dirancang untuk menyederhanakan pencatatan kehadiran karyawan, pengajuan cuti, dan manajemen lembur. Sistem ini mengotomatiskan alur persetujuan supervisor dan mengoptimalkan penyimpanan server untuk memastikan administrasi institusi yang efisien dan aman.'
   }
 }
 
@@ -244,6 +258,7 @@ const projects = [
   { title: 'TIRTARIMBA Network Center', descriptionKey: 'tirtarimba', image: T1, techStack: ['vuedotjs', 'tailwindcss', 'express', 'nodedotjs', 'mysql'], carouselImages: tirtarimbaCarouselImages },
   { title: 'SIMASET', descriptionKey: 'simaset', image: S1, techStack: ['react', 'tailwindcss', 'express', 'nodedotjs', 'mysql', 'flutter'], carouselImages: simasetCarouselImages },
   { title: 'DIAMOND', descriptionKey: 'diamond', image: D1, techStack: ['vuedotjs', 'tailwindcss'], carouselImages: diamondCarouselImages },
+  { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
   { title: 'OASIS DESTINATION', descriptionKey: 'oasis', image: O1, techStack: ['react', 'tailwindcss', 'express'], carouselImages: oasisCarouselImages },
   { title: 'AspalKita', descriptionKey: 'aspal', image: A1, techStack: ['html5', 'css', 'javascript'], carouselImages: aspalCarouselImages }
 ]
