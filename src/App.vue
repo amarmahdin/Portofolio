@@ -12,7 +12,7 @@ import { ref, provide, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import Sidebar from './components/Sidebar.vue'
 
-const theme = ref('light')
+const theme = ref('dark')
 const themeTransition = ref(false)
 const setTheme = (value) => {
   themeTransition.value = true
