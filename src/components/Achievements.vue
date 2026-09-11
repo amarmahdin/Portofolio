@@ -91,6 +91,7 @@ import msibImg from '../assets/msib.webp'
 import dicodingImg from '../assets/dicoding.webp'
 import babaImg from '../assets/baba.webp'
 import sicenceImg from '../assets/sicence.webp'
+import frontierImg from '../assets/Frontier.webp'
 
 const lang = inject('lang')
 const searchQuery = ref('')
@@ -103,6 +104,7 @@ const openPopup = (src) => { popupImage.value = src }
 const closePopup = () => { popupImage.value = null }
 
 const achievements = [
+  { title: 'Frontier Engineering Challenge 2026', certificate: 'micro1.', issuedDate: 'Sep 10, 2026', image: frontierImg },
   { title: 'Azure AI Fundamentals', certificate: 'Microsoft', issuedDate: 'Sept 2025', image: mcfImg },
   { title: 'Word 2019 Specialist', certificate: 'Microsoft', issuedDate: 'Apr 2025', image: mosImg },
   { title: 'Study Independent', certificate: 'Kampus Merdeka', issuedDate: 'Jul 2024', image: msibImg },
