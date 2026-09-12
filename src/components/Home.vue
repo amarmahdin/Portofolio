@@ -163,7 +163,7 @@ onMounted(() => {
 .skill-item::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: -2.25rem;
+  bottom: calc(100% + 0.5rem);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
   padding: 0.35rem 0.75rem;
@@ -186,11 +186,12 @@ onMounted(() => {
 .skill-item::before {
   content: '';
   position: absolute;
-  bottom: -0.5rem;
+  bottom: calc(100% + 0.125rem);
   left: 50%;
   transform: translateX(-50%);
   border: 5px solid transparent;
   border-top-color: #374151;
+  border-bottom: none;
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 10;
