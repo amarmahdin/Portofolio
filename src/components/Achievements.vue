@@ -104,7 +104,7 @@ const openPopup = (src) => { popupImage.value = src }
 const closePopup = () => { popupImage.value = null }
 
 const achievements = [
-  { title: 'Frontier Engineering Challenge 2026', certificate: 'micro1', issuedDate: 'Sept 2026', image: frontierImg },
+  { title: 'Frontier Engineering Challenge 2026', certificate: 'Micro1', issuedDate: 'Sept 2026', image: frontierImg },
   { title: 'Azure AI Fundamentals', certificate: 'Microsoft', issuedDate: 'Sept 2025', image: mcfImg },
   { title: 'Word 2019 Specialist', certificate: 'Microsoft', issuedDate: 'Apr 2025', image: mosImg },
   { title: 'Study Independent', certificate: 'Kampus Merdeka', issuedDate: 'Jul 2024', image: msibImg },
