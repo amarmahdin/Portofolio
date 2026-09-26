@@ -54,6 +54,8 @@
           </div>
         </div>
       </div>
+
+      <GithubContributions />
     </div>
   </main>
 </template>
@@ -62,6 +64,7 @@
 import { ref, computed, onMounted, inject } from 'vue'
 import PageNav from './PageNav.vue'
 import LangToggle from './LangToggle.vue'
+import GithubContributions from './GithubContributions.vue'
 import { getIconSvgByKey } from '@/utils/simpleIcons'
 
 const lang = inject('lang')
