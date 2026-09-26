@@ -35,7 +35,11 @@
             {{ isCurrentYearView ? t.lastYear : t.inYear(selectedYear) }}
           </p>
 
-          <div ref="calendarHost" class="w-full calendar-scroll overflow-x-auto">
+          <div
+            ref="calendarHost"
+            class="w-full"
+            :class="isCompact ? 'calendar-scroll overflow-x-auto' : 'overflow-x-hidden'"
+          >
             <div
               class="calendar-inner relative"
               :style="calendarInnerStyle"
@@ -83,7 +87,7 @@
                       v-for="(day, di) in week"
                       :key="di"
                       type="button"
-                      class="contrib-cell rounded-[2px] p-0 border-0 w-full focus:outline-none focus-visible:ring-1 focus-visible:ring-green-500"
+                      class="contrib-cell rounded-[2px] p-0 border-0 w-full focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-green-500"
                       :class="cellClass(day)"
                       :tabindex="day && !day.empty ? 0 : -1"
                       :aria-label="day && !day.empty ? tooltipText(day) : undefined"
@@ -502,7 +506,7 @@ function cellClass(day) {
   return [
     levelClass(day.level),
     'cursor-pointer',
-    active ? 'outline outline-1 outline-gray-500 dark:outline-gray-300 z-10' : '',
+    active ? 'ring-1 ring-inset ring-gray-500 dark:ring-gray-300 z-10' : '',
   ]
 }
 
@@ -638,12 +642,12 @@ onUnmounted(() => {
 }
 
 .contrib-cell {
-  transition: outline 0.1s ease, background-color 0.15s ease;
+  transition: box-shadow 0.1s ease, background-color 0.15s ease;
   min-height: 0;
   min-width: 0;
 }
 .contrib-cell:hover:not(:disabled):not(.opacity-0) {
-  outline: 1px solid rgba(140, 140, 140, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(140, 140, 140, 0.85);
 }
 .gh-tooltip {
   animation: tip-in 0.1s ease;
