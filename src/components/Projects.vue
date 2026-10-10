@@ -275,7 +275,10 @@ const projectDescriptions = {
   siperkul: {
     en: 'SIPERKUL is a web-based academic scheduling platform designed to streamline classroom allocations and live room tracking. The application bridges communication between faculty and administration to eliminate scheduling conflicts and improve campus operational efficiency.',
     id: 'SIPERKUL adalah platform penjadwalan akademik berbasis web yang dirancang untuk menyederhanakan alokasi ruang kelas dan pelacakan ruangan secara langsung. Aplikasi ini menjembatani komunikasi antara dosen dan administrasi untuk menghilangkan konflik penjadwalan dan meningkatkan efisiensi operasional kampus.'
-  }
+  },
+  wedding: {
+  en: 'A web-based digital wedding invitation platform designed to deliver a personalized and interactive guest experience. The application enables hosts to share customized invitation links, present event details and media seamlessly, and collect guest wishes in real time—providing a modern alternative to printed invitations while improving accessibility and engagement.',
+  },
 }
 
 const projects = [
