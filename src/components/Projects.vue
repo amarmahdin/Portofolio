@@ -227,6 +227,7 @@ const diamondCarouselImages = [D1, D2, D3, D4, D5, D6, D7, D8]
 const oasisCarouselImages = [O1, O2, O3, O4, O5, O6, O7, O8, O9, O10]
 const aspalCarouselImages = [A1, A2, A3, A4, A5, A6, A7, A8]
 const abonCarouselImages = [B1, B2, B3, B4, B5, B6, B7, B8]
+const weddingCarouselImages = [U1, U2, U3, U4, U5, U6, U7, U8, U9]
 
 const techIconMap = {
   react: { key: 'siReact', color: '#61DAFB', displayName: 'React.js' },
