@@ -201,6 +201,7 @@ import T6 from '../assets/T6.webp'
 import T7 from '../assets/T7.webp'
 import T8 from '../assets/T8.webp'
 import U1 from '../assets/U1.webp'
+import U2 from '../assets/U2.webp'
 
 const lang = inject('lang')
 const carouselOpen = ref(false)
