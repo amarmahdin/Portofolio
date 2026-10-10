@@ -203,6 +203,7 @@ import T8 from '../assets/T8.webp'
 import U1 from '../assets/U1.webp'
 import U2 from '../assets/U2.webp'
 import U3 from '../assets/U3.webp'
+import U4 from '../assets/U4.webp'
 
 
 const lang = inject('lang')
