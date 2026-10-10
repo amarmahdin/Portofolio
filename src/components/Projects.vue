@@ -204,6 +204,7 @@ import U1 from '../assets/U1.webp'
 import U2 from '../assets/U2.webp'
 import U3 from '../assets/U3.webp'
 import U4 from '../assets/U4.webp'
+import U5 from '../assets/U5.webp'
 
 
 const lang = inject('lang')
