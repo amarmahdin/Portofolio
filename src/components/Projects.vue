@@ -283,7 +283,7 @@ const projectDescriptions = {
 }
 
 const projects = [
-  { title: 'Wedding Invitation Website — Euis & Eka', descriptionKey: 'wedding', image: U1,
+  { title: 'Wedding Invitation Website — Euis & Eka', descriptionKey: 'wedding', image: U1, techStack: ['vuedotjs', 'tailwindcss', 'firebase'],
     },
   { title: 'SIPERKUL', descriptionKey: 'siperkul', image: SI1, techStack: ['codeigniter', 'javascript', 'bootstrap', 'mysql'], carouselImages: siperkultarouselImages },
   { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
