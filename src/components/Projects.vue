@@ -283,6 +283,7 @@ const projectDescriptions = {
 }
 
 const projects = [
+  { title: 'Wedding Invitation Website — Euis & Eka', },
   { title: 'SIPERKUL', descriptionKey: 'siperkul', image: SI1, techStack: ['codeigniter', 'javascript', 'bootstrap', 'mysql'], carouselImages: siperkultarouselImages },
   { title: 'ABON', descriptionKey: 'abon', image: B1, techStack: ['laravel', 'javascript', 'bootstrap', 'css', 'mysql'], carouselImages: abonCarouselImages },
   { title: 'TIRTARIMBA Network Center', descriptionKey: 'tirtarimba', image: T1, techStack: ['vuedotjs', 'tailwindcss', 'express', 'nodedotjs', 'mysql'], carouselImages: tirtarimbaCarouselImages },
