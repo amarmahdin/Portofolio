@@ -244,6 +244,7 @@ const techIconMap = {
   html5: { key: 'siHtml5', color: '#E34F26', displayName: 'HTML5' },
   css: { key: 'siCss', color: '#1572B6', displayName: 'CSS' },
   javascript: { key: 'siJavascript', color: '#F7DF1E', displayName: 'JavaScript' }
+  firebase: { key: 'siFirebase', color: '#FFCA28', displayName: 'Firebase' },
 }
 
 const projectDescriptions = {
