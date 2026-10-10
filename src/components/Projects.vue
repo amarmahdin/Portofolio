@@ -278,6 +278,7 @@ const projectDescriptions = {
   },
   wedding: {
   en: 'A web-based digital wedding invitation platform designed to deliver a personalized and interactive guest experience. The application enables hosts to share customized invitation links, present event details and media seamlessly, and collect guest wishes in real time—providing a modern alternative to printed invitations while improving accessibility and engagement.',
+  id: 'Platform undangan pernikahan digital berbasis web yang dirancang untuk memberikan pengalaman tamu yang personal dan interaktif. Aplikasi ini memungkinkan penyelenggara membagikan tautan undangan yang disesuaikan, menampilkan detail acara dan media dengan mulus, serta mengumpulkan ucapan tamu secara real-time—sebagai alternatif modern dari undangan cetak sekaligus meningkatkan aksesibilitas dan engagement.'
   },
 }
 
